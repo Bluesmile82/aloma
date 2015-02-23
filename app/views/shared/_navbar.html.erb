@@ -9,14 +9,14 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <%= image_tag "logo.png" %>
+          <%= image_tag "ghost.png" %>
         </a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right list-inline">
-
+          <li><h1>HauntedBnb</h1></li>
                 <% if user_signed_in? %>
                   <li>Hello <%= current_user.email %>!</li>
                   <li><%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %></li>
