@@ -1,0 +1,9 @@
+<h1>Book your future holiday</h1>
+
+<%= @flat.name  %>
+
+<%= simple_form_for [@flat, Booking.new] , :html => { :class => 'form-inline' } do |f| %>
+<p> <%= f.input :start_date %> </p>
+<p><%= f.input :end_date %> </p>
+<p><%= f.button :submit , :class => 'btn btn-primary' %> </p>
+<% end %>
