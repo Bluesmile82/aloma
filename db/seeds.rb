@@ -6,8 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-15.times do
+10.times do
+  user =  User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone_number: Faker::PhoneNumber.phone_number,
+    status: "user",
 
-Flat.create(name: , description: , price: , street: , city: ,country:, zipcode:)
+    )
+  user.password ="aloma123"
+  user.password_confirmation = "aloma123"
+
+  user.save!
+
+
+  2.times do
+
+  user.flats.create(
+    name: Faker::Lorem.sentence(word_count = 4) ,
+    description: Faker::Lorem.paragraph,
+    price: rand(10..200),
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    country: Faker::Address.country,
+    zipcode: Faker::Address.zip
+    )
+
+  end
 
 end
