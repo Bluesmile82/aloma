@@ -1,0 +1,10 @@
+<h1><%= @flat.name  %> Availabilities</h1>
+
+
+<ul>
+  <% @availabilities.each do |availability| %>
+  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New', new_flat_availability_path, :class => "btn btn-primary" %>
