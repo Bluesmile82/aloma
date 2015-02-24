@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :flats do
-    resources :bookings, only: [:new, :create, :index, :show]
+    resources :bookings, only: [:new, :create, :index, :show ]
+    resources :pictures, only: [:new, :create, :destroy ]
     # get 'welcome/index'
   end
 
