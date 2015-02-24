@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create, :index, :show ]
     resources :pictures, only: [:new, :create, :destroy ]
     # get 'welcome/index'
+    resources :availabilities, only: [:index, :new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

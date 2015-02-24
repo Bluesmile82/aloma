@@ -1,0 +1,9 @@
+<h1>Create a new availability for <%= @flat.name  %></h1>
+
+
+
+<%= simple_form_for [@flat, @availability] , :html => { :class => 'form-inline' } do |f| %>
+<p> <%= f.input :start_date %> </p>
+<p><%= f.input :end_date %> </p>
+<p><%= f.button :submit , :class => 'btn btn-primary' %> </p>
+<% end %>
