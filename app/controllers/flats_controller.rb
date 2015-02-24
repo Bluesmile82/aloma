@@ -29,10 +29,8 @@ class FlatsController < ApplicationController
     respond_to do |format|
       if @flat.save
         format.html { redirect_to @flat, notice: 'Flat was successfully created.' }
-        format.json { render :show, status: :created, location: @flat }
       else
         format.html { render :new }
-        format.json { render json: @flat.errors, status: :unprocessable_entity }
       end
     end
   end

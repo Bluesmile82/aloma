@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :flats do
     resources :bookings, only: [:new, :create, :index, :show]
     # get 'welcome/index'
+    resources :availabilities, only: [:index, :new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
