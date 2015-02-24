@@ -33,9 +33,9 @@ class Availability < ActiveRecord::Base
       if availability.start_date > start_date && availability.end_date < end_date
         availability.destroy
       elsif
-        # availability.start_date < start_date && availability.end_date > start_date
-        # params[:start_date] = availability.start_date
-        # availability.destroy
+        availability.start_date < start_date && availability.end_date > start_date
+        params[:start_date] = availability.start_date
+        availability.destroy
       end
 
 
