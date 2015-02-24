@@ -6,6 +6,9 @@ gem 'puma',           group: :production
 
 gem 'figaro'
 
+gem 'aws-sdk'
+gem 'paperclip'
+
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
