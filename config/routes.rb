@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :flats do
-  resources :bookings, only: [:new, :create, :index, :show]
-  get 'welcome/index'
+    resources :bookings, only: [:new, :create, :index, :show]
+    # get 'welcome/index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
