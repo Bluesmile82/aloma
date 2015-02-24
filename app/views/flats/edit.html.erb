@@ -2,5 +2,15 @@
 
 <%= render 'form' %>
 
+
+<%= form_for([@flat, Picture.new], html: { multipart: true }) do |f| %>
+  <!-- ... -->
+  <p>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </p>
+  <p><%= f.submit "Update your Posting!" %></p>
+<% end %>
+
 <%= link_to 'Show', @flat %> |
 <%= link_to 'Back', flats_path %>

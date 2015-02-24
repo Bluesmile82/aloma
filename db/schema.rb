@@ -54,10 +54,15 @@ ActiveRecord::Schema.define(version: 20150224121000) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "image_url"
+
     t.integer  "flat_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+
   end
 
   add_index "pictures", ["flat_id"], name: "index_pictures_on_flat_id", using: :btree
