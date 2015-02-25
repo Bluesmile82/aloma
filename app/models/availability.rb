@@ -1,7 +1,6 @@
 class Availability < ActiveRecord::Base
   belongs_to :flat
   validate :availability_not_in_the_past, :end_date_after_start_date
-  after_validation :update_availabilities
 
   def availability_not_in_the_past
     if start_date < Date.today
@@ -26,19 +25,5 @@ class Availability < ActiveRecord::Base
   #   end
   # end
 
-  def update_availabilities
 
-    flat.availabilities.each do |availability|
-
-      if availability.start_date > start_date && availability.end_date < end_date
-        availability.destroy
-      elsif
-        availability.start_date < start_date && availability.end_date > start_date
-        params[:start_date] = availability.start_date
-        availability.destroy
-      end
-
-
-    end
-  end
 end
