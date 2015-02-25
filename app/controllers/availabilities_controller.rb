@@ -35,19 +35,23 @@ before_action :set_flat
 
     def update_availabilities
       @availability = Availability.last
-      @flat.availabilities.each do |availability|
-      unless availability == @availability
-            if availability.start_date > @availability.start_date && availability.end_date < @availability.end_date
-              availability.destroy
-            elsif availability.start_date < @availability.start_date && availability.end_date > @availability.start_date && availability.end_date > @availability.end_date
-              @availability.start_date = availability.start_date
-              @availability.end_date = availability.end_date
+      @flat.availabilities.each do |a|
+      unless a == @availability
+            if a.start_date > @availability.start_date && a.end_date < @availability.end_date
+              a.destroy
+            elsif a.start_date < @availability.start_date && a.end_date > @availability.start_date && a.end_date > @availability.end_date
+              @availability.start_date = a.start_date
+              @availability.end_date = a.end_date
               @availability.save
-              availability.destroy
-            elsif availability.start_date < @availability.start_date && availability.end_date > @availability.start_date
-              @availability.start_date = availability.start_date
+              a.destroy
+            elsif a.start_date < @availability.start_date && a.end_date > @availability.start_date && a.end_date < @availability.end_date
+              @availability.start_date = a.start_date
               @availability.save
-              availability.destroy
+              a.destroy
+            elsif a.start_date > @availability.start_date && a.start_date < @availability.end_date && a.end_date > @availability.end_date
+              @availability.end_date = a.end_date
+              @availability.save
+              a.destroy
             end
           end
         end
