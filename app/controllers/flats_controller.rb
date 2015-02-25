@@ -1,31 +1,33 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_flat, only: [:show, :edit, :update, :destroy]
-  # GET /flats
-  # GET /flats.json
+  before_action :set_flat, only: [:show, :edit, :update, :destroy, :show_owner_flat]
+
+  def index_owner_flats
+    @flats = current_user.flats
+  end
+
+  def show_owner_flat
+    @flat = current_user.flats.find(params[:id])
+  end
+
   def index
     @flats = Flat.all
   end
 
-  # GET /flats/1
-  # GET /flats/1.json
   def show
   end
 
-  # GET /flats/new
   def new
     @flat = Flat.new
   end
 
-  # GET /flats/1/edit
   def edit
     @flat.pictures.new
   end
 
-  # POST /flats
-  # POST /flats.json
   def create
-    @flat = Flat.build(flat_params)
+    @flat = current_user.flats.build(flat_params)
+
 
     respond_to do |format|
       if @flat.save
@@ -36,8 +38,6 @@ class FlatsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /flats/1
-  # PATCH/PUT /flats/1.json
   def update
     respond_to do |format|
       if @flat.update(flat_params)
@@ -50,8 +50,6 @@ class FlatsController < ApplicationController
     end
   end
 
-  # DELETE /flats/1
-  # DELETE /flats/1.json
   def destroy
     @flat.destroy
     respond_to do |format|
@@ -61,13 +59,13 @@ class FlatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_flat
       @flat = Flat.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def flat_params
-      params.require(:flat).permit(:name, :description, :price, :street, :city, :country, :zipcode, pictures_attributes: [:image])
+      params.require(:flat).permit(:name, :description, :price, :street, :city, :country, :zipcode, :user_id, pictures_attributes: [:image])
     end
 end

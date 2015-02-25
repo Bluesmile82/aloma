@@ -1,0 +1,68 @@
+<div class='container'>
+  <div class="row">
+<% @flat.pictures.each do |pic| %>
+<div class="col-xs-5">
+  <%= image_tag pic.image.url(:medium) %>
+  <p class="text-center"><%= link_to 'Destroy', flat_picture_path(@flat, pic), :class => 'btn btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+</div>
+<% end %>
+</div>
+<div class="row">
+<div class="col-xs-6 col-xs-offset-3">
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @flat.name %></div>
+  <div class="panel-body">
+    <p>
+  <strong>Name:</strong>
+  <%= @flat.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @flat.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @flat.price %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @flat.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @flat.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @flat.country %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @flat.zipcode %>
+</p>
+  <div class="row">
+    <% @flat.pictures.each do |pic| %>
+    <div class="col-xs-3">
+    <%= image_tag pic.image.url(:thumb) %>
+  </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+<strong>My availabilities</strong>
+  <% @flat.availabilities.each do |availability| %>
+  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <% end %>
+<%= link_to 'Edit', edit_flat_path(@flat) %> |
+<%= link_to("Add availability", new_flat_availability_path(@flat) ) %> |
+<%= link_to 'Back', owner_flats_path %>
+</div>

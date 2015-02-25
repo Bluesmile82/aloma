@@ -1,0 +1,7 @@
+<h1>My flats</h1>
+<ul>
+  <%  @flats.each do |flat| %>
+  <li> <%= flat.name %> <%= link_to("Show", owner_flat_path(flat) ) %> |
+  <%= link_to("Add availability", new_flat_availability_path(flat) ) %></li>
+  <% end %>
+</ul>
