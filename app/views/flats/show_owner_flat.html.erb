@@ -53,16 +53,17 @@
   </div>
     <% end %>
   </div>
+<strong>My availabilities</strong>
+  <% @flat.availabilities.each do |availability| %>
+  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <% end %>
+  <br>
+<%= link_to 'Edit', edit_flat_path(@flat), :class => "btn btn-primary" %>
+<%= link_to("Add availability", new_flat_availability_path(@flat), :class => "btn btn-primary" ) %>
+<%= link_to 'Back', owner_flats_path, :class => "btn btn-primary" %>
   </div>
 </div>
 </div>
 </div>
 
-<strong>My availabilities</strong>
-  <% @flat.availabilities.each do |availability| %>
-  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
-  <% end %>
-<%= link_to 'Edit', edit_flat_path(@flat) %> |
-<%= link_to("Add availability", new_flat_availability_path(@flat) ) %> |
-<%= link_to 'Back', owner_flats_path %>
 </div>
