@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<% @flat.pictures.each do |pic| %>
+  <%= image_tag pic.image.url(:medium) %>
+  <%= link_to 'Destroy', flat_picture_path(@flat, pic), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @flat.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @flat.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @flat.price %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @flat.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @flat.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @flat.country %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @flat.zipcode %>
+</p>
+<strong>My availabilities</strong>
+  <% @flat.availabilities.each do |availability| %>
+  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <% end %>
+<%= link_to 'Edit', edit_flat_path(@flat) %> |
+<%= link_to("Add availability", new_flat_availability_path(@flat) ) %> |
+<%= link_to 'Back', owner_flats_path %>
