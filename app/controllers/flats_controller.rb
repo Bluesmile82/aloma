@@ -1,5 +1,4 @@
 class FlatsController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_flat, only: [:show, :edit, :update, :destroy, :show_owner_flat]
 
   def index_owner_flats
