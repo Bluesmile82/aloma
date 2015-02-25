@@ -13,8 +13,10 @@ before_action :set_flat
   def create
     @availability = @flat.availabilities.build(availability_params)
 
+
     respond_to do |format|
       if @availability.save
+        update_availabilities
         format.html { redirect_to flat_availabilities_path(@flat), notice: 'Availability was successfully created.' }
       else
         format.html { render :new }
@@ -29,6 +31,26 @@ before_action :set_flat
 
     def availability_params
       params.require(:availability).permit(:start_date, :end_date, :flat_id)
+    end
+
+    def update_availabilities
+      @availability = Availability.last
+      @flat.availabilities.each do |availability|
+      unless availability == @availability
+            if availability.start_date > @availability.start_date && availability.end_date < @availability.end_date
+              availability.destroy
+            elsif availability.start_date < @availability.start_date && availability.end_date > @availability.start_date && availability.end_date > @availability.end_date
+              @availability.start_date = availability.start_date
+              @availability.end_date = availability.end_date
+              @availability.save
+              availability.destroy
+            elsif availability.start_date < @availability.start_date && availability.end_date > @availability.start_date
+              @availability.start_date = availability.start_date
+              @availability.save
+              availability.destroy
+            end
+          end
+        end
     end
 
 end
