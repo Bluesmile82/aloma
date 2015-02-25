@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   before_action :find_flat, only: [ :new, :create, :destroy ]
 
   def new
-    @picture = Picture.new
+    @picture = @flat.pictures.new
   end
 
   def create
