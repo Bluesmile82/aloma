@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  belongs_to :flat
+  belongs_to :flat, inverse_of: :pictures
 
   has_attached_file :image,
     styles: { medium: "300x300>", thumb: "100x100>" }
