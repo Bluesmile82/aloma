@@ -5,7 +5,12 @@
 </div>
 
 <%= video_tag "ghost.mp4" , :autoplay => true, :loop => true, :class => "vidb" %>
-<!-- <video width="320" height="240" controls="controls">
-      <source src="/assets/ghost.mp4"/>
- Your browser does not support the video tag.
-</video> -->
+
+<div id="search-box">
+ <%= form_tag(flats_path, :method => "get", id: "search-box") do %>
+   <%= text_field_tag :city, params[:city], placeholder: "Search for cities" %>
+   <%= submit_tag "Dare to be spooked", :name => nil, class: "btn btn-danger" %>
+ <% end %>
+</div>
+
+
