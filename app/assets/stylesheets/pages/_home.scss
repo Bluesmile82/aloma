@@ -1,9 +1,20 @@
 body{
-  background-image: url("fog_landscape.jpg");
-  background-size: cover;
+  // background-image: url("fog_landscape.jpg");
+  // background-size: cover;
 
 #title{
   font-size: 80px;
+  color:white;
+
 }
+.vidb {
+position: fixed; right: 0; bottom: 0;
+min-width: 100%; min-height: 100%;
+width: auto; height: auto; z-index: -100;
+
+background-size: cover;
+}
+
+
 
 }
