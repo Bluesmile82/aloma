@@ -22,10 +22,12 @@ class FlatsController < ApplicationController
   end
 
   def edit
+    @flat.pictures.new
   end
 
   def create
-    @flat = current_user.flats.new(flat_params)
+    @flat = current_user.flats.build(flat_params)
+
 
     respond_to do |format|
       if @flat.save
@@ -64,6 +66,6 @@ class FlatsController < ApplicationController
 
 
     def flat_params
-      params.require(:flat).permit(:name, :description, :price, :street, :city, :country, :zipcode, :user_id)
+      params.require(:flat).permit(:name, :description, :price, :street, :city, :country, :zipcode, :user_id, pictures_attributes: [:image])
     end
 end
