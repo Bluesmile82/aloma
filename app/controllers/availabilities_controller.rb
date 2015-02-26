@@ -7,7 +7,6 @@ before_action :set_flat
 
   def new
     @availability = Availability.new
-
   end
 
   def create
@@ -22,12 +21,18 @@ before_action :set_flat
     end
   end
 
-  def self.remove_booked(startdate, enddate)
-    @flat.availabilities.each do |a|
-      if startdate > a.start_date && enddate < end_date
-        Availability.create(flat_id: a.flat_id, start_date: a.startdate, end_date: startdate)
-        a.start_date = enddate
-        a.save
+  def self.remove_booked(startdate, enddate, flat)
+    flat.availabilities.each do |a|
+      if startdate >= a.start_date && enddate <= a.end_date
+        if startdate != a.start_date
+          Availability.create(flat_id: a.flat_id, start_date: a.start_date, end_date: startdate -1)
+        end
+        if enddate != a.end_date
+          a.start_date = enddate + 1
+          a.save
+        else
+          a.destroy
+        end
       end
     end
   end
