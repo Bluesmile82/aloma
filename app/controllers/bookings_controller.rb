@@ -9,8 +9,8 @@ before_action :find_flat
     @booking = @flat.bookings.build(booking_params)
     @booking.user = current_user
     if @booking.save
+      AvailabilitiesController.remove_booked(start_date, end_date)
       UserMailer.booking_confirmation(user:current_user,booking:@booking,flat:@flat).deliver
-
       # notice: 'Flat was successfully created.'
     else
       render :new

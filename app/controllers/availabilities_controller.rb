@@ -12,14 +12,22 @@ before_action :set_flat
 
   def create
     @availability = @flat.availabilities.build(availability_params)
-
-
     respond_to do |format|
       if @availability.save
         update_availabilities
         format.html { redirect_to owner_flat_path(@flat), notice: 'Availability was successfully created.' }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  def self.remove_booked(startdate, enddate)
+    @flat.availabilities.each do |a|
+      if startdate > a.start_date && enddate < end_date
+        Availability.create(flat_id: a.flat_id, start_date: a.startdate, end_date: startdate)
+        a.start_date = enddate
+        a.save
       end
     end
   end
