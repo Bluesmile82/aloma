@@ -54,11 +54,21 @@
     <% end %>
   </div>
   </div>
+
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading"> Available dates </div>
+  <div class="panel-body">
+   <% @flat.availabilities.each do |availability| %>
+  <li><strong>From</strong> <%= availability.start_date %> <strong>to</strong> <%= availability.end_date %></li>
+  <% end %>
+
 </div>
 </div>
+<p><%= link_to 'Back', flats_path, :class => "btn btn-default" %>
+  <%= link_to 'Book this haunted flat', new_flat_booking_path(@flat), :class => "btn btn-primary" %> </p>
 </div>
 
+</div>
 
-<%= link_to 'Edit', edit_flat_path(@flat) %> |
-<%= link_to 'Back', flats_path %>
 </div>

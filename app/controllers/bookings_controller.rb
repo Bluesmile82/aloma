@@ -5,7 +5,13 @@ before_action :find_flat
   end
 
   def create
-    @booking = Booking.create(booking_params)
+    @booking = @flat.bookings.build(booking_params)
+    @booking.user = current_user
+    if @booking.save
+      # notice: 'Flat was successfully created.'
+    else
+      render :new
+    end
   end
 
   def index
