@@ -9,6 +9,8 @@ before_action :find_flat
     @booking = @flat.bookings.build(booking_params)
     @booking.user = current_user
     if @booking.save
+      UserMailer.booking_confirmation(user:current_user,booking:@booking,flat:@flat).deliver
+
       # notice: 'Flat was successfully created.'
     else
       render :new
@@ -30,4 +32,5 @@ before_action :find_flat
   def booking_params
     params.require(:booking).permit(:flat_id, :user_id, :start_date, :end_date )
   end
+
 end
