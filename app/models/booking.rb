@@ -19,5 +19,5 @@ class Booking < ActiveRecord::Base
     end
     result
   end
->>>>>>> c07b3000128c625011778ffe9c39b9c371d6ceab
+
 end

@@ -8,9 +8,12 @@ class UserMailer < ApplicationMailer
 
 default from: 'haunted@yopmail.com'
 
-  def booking_confirmation
-    @user = user
-    @booking = booking
-    mail (to: @user.email, subject: 'You are about to be terrified')
+  def booking_confirmation(hash)
+    @user = hash[:user]
+    @booking = hash[:booking]
+    @flat = hash[:flat]
+    # @user.email = 'haunted@yopmail.com'
+    mail(to: @user.email, subject: 'You are about to be terrified')
+
   end
 end
