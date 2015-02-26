@@ -1,9 +1,40 @@
-<h1>Book your future holiday</h1>
+<% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <p class="error-message">Flat not available, choose another date</p>
+      <!-- <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul> -->
+    </div>
+  <% end %>
 
+<h1>Book your future scary holiday</h1>
+<div class="panel panel-primary">
+  <div class="panel-heading">The haunted flat you chose</div>
+  <div class="panel-body">
 <%= @flat.name  %>
+</div>
+</div>
 
+<div class="panel panel-primary">
+  <div class="panel-heading"> Available dates </div>
+  <div class="panel-body">
+   <% @flat.availabilities.each do |availability| %>
+  <li><strong>From</strong> <%= availability.start_date %> <strong>to</strong> <%= availability.end_date %></li>
+  <% end %>
+</div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-body">
 <%= simple_form_for [@flat, Booking.new] , :html => { :class => 'form-inline' } do |f| %>
-<p> <%= f.input :start_date %> </p>
+<p><%= f.input :start_date %> </p>
 <p><%= f.input :end_date %> </p>
-<p><%= f.button :submit , :class => 'btn btn-primary' %> </p>
+<p><%= link_to 'Back', flat_path(@flat), :class => "btn btn-default" %> <%= f.button :submit , :class => 'btn btn-primary' %>
+</p>
+
 <% end %>
+</div>
+</div>
