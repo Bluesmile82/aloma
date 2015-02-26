@@ -1,6 +1,26 @@
-<h1>Create a new availability for <%= @flat.name  %></h1>
+<div class="container">
+<div class="row">
+<div class="col-xs-6 col-xs-offset-3">
+<div class="panel panel-primary">
+  <div class="panel-heading">Create a new availability for <%= @flat.name  %></div>
+  <div class="panel-body">
+<h4>Current Availabilities</h4>
 
 
+<ul>
+  <% @availabilities.each do |availability| %>
+  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <% end %>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-xs-offset-3">
+<div class="panel panel-primary">
+  <div class="panel-body">
 
 <%= simple_form_for [@flat, @availability] , :html => { :class => 'form-inline' } do |f| %>
 <p> <%= f.input :start_date %> </p>
@@ -8,3 +28,10 @@
 <p><%= f.button :submit , :class => 'btn btn-primary' %> <%= link_to("Back", :back , :class => 'btn btn-primary') %> </p>
 
 <% end %>
+</div>
+</div>
+
+
+
+</div>
+</div>

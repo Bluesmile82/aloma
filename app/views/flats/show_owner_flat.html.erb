@@ -59,6 +59,7 @@
   <% end %>
   <br>
 <%= link_to 'Edit', edit_flat_path(@flat), :class => "btn btn-primary" %>
+<%= link_to 'Delete', flat_path(@flat),:method => :delete, :class => "btn btn-primary" %>
 <%= link_to("Add availability", new_flat_availability_path(@flat), :class => "btn btn-primary" ) %>
 <%= link_to 'Back', owner_flats_path, :class => "btn btn-primary" %>
   </div>

@@ -1,11 +1,39 @@
-<div class="container">
+<!-- <div class="container">
 <div class="row">
 <h1>My flats</h1>
 <ul>
   <%  @flats.each do |flat| %>
   <li> <%= flat.name %> <%= link_to("Show", owner_flat_path(flat), :class => "btn btn-primary" ) %>
-  <%= link_to("Add availability", new_flat_availability_path(flat), :class => "btn btn-primary" ) %></li>
+  </li>
   <% end %>
 </ul>
 </div>
+</div>
+ -->
+
+<div class="container">
+<h1>All your spooky Places...</h1>
+
+
+
+
+<div class="row">
+
+<% @flats.each do |flat| %>
+   <div class="col-xs-6">
+    <div class="thumbnail", id="padding_row">
+    <img src="http://www.ht-real-estate.com/template/ht2014/images/landscape/05.jpg" alt="missing">
+     <div class="caption">
+       <h3><%= flat.name.truncate_words(2) %></h3>
+       <p>EUR <%= flat.price %></p>
+       <p><%= flat.city %></p>
+       <p><%= link_to 'Details', owner_flat_path(flat), :class => "btn btn-default" %> <%= link_to("Add availability", new_flat_availability_path(flat), :class => "btn btn-primary" ) %></p>
+     </div>
+
+   </div>
+
+ </div>
+ <% end %>
+</div>
+
 </div>

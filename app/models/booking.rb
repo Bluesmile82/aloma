@@ -5,6 +5,24 @@ class Booking < ActiveRecord::Base
 
   validate :available?
 
+validate :booking_not_in_the_past, :end_date_after_start_date
+
+  def booking_not_in_the_past
+    if start_date < Date.today
+      errors.add(:start_date, "can't be in the past")
+    end
+    if end_date < Date.today
+      errors.add(:end_date, "can't be in the past")
+    end
+  end
+
+  def end_date_after_start_date
+    if start_date > end_date
+      errors.add(:end_date, "must be after the start date")
+    end
+  end
+
+
   def available?
     result = false
     # byebug
