@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 before_action :find_flat
 
   def new
+    @booking = Booking.new
   end
 
   def create
