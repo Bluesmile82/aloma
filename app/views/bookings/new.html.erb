@@ -1,11 +1,11 @@
 <% if @booking.errors.any? %>
     <div id="error_explanation">
       <p class="error-message">Flat not available, choose another date</p>
-      <!-- <ul>
+      <ul>
       <% @booking.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul> -->
+      </ul>
     </div>
   <% end %>
 

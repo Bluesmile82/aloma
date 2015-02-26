@@ -7,6 +7,7 @@ before_action :set_flat
 
   def new
     @availability = Availability.new
+    @availabilities = @flat.availabilities
   end
 
   def create
