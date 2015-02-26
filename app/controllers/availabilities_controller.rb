@@ -37,18 +37,22 @@ before_action :set_flat
       @availability = Availability.last
       @flat.availabilities.each do |a|
       unless a == @availability
-            if a.start_date > @availability.start_date && a.end_date < @availability.end_date
+        # if the db availability is contained in the new date
+            if a.start_date >= @availability.start_date && a.end_date <= @availability.end_date
               a.destroy
-            elsif a.start_date < @availability.start_date && a.end_date > @availability.start_date && a.end_date > @availability.end_date
+              # the new date is contained in the DB
+            elsif a.start_date <= @availability.start_date && a.end_date > @availability.start_date && a.end_date >= @availability.end_date
               @availability.start_date = a.start_date
               @availability.end_date = a.end_date
               @availability.save
               a.destroy
-            elsif a.start_date < @availability.start_date && a.end_date > @availability.start_date && a.end_date < @availability.end_date
+              # "décalé" the new one is "overlapping" later than the DB with some dates in common
+            elsif a.start_date < @availability.start_date && a.end_date >= @availability.start_date && a.end_date < @availability.end_date
               @availability.start_date = a.start_date
               @availability.save
               a.destroy
-            elsif a.start_date > @availability.start_date && a.start_date < @availability.end_date && a.end_date > @availability.end_date
+              # "décalé" but new one is before the Db with dates in common
+            elsif a.start_date > @availability.start_date && a.start_date <= @availability.end_date && a.end_date > @availability.end_date
               @availability.end_date = a.end_date
               @availability.save
               a.destroy
