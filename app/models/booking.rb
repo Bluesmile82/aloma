@@ -1,6 +1,7 @@
 class Booking < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :flat
+
+  belongs_to :user, inverse_of: :bookings
+  belongs_to :flat, inverse_of: :bookings
 
   validate :available?
 
@@ -18,4 +19,5 @@ class Booking < ActiveRecord::Base
     end
     result
   end
+
 end
