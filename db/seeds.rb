@@ -20,17 +20,28 @@
 
   user.save!
 
+  user.flats.create(
+    name: Faker::Lorem.sentence(word_count = 4) ,
+    description: Faker::Lorem.paragraph,
+    price: rand(10..200),
+    street: 'Place Sainte-Gudule',
+    city: "Bruxelles",
+    country: "Belgique",
+    zipcode: '1000'
 
-  2.times do
+    )
 
   user.flats.create(
     name: Faker::Lorem.sentence(word_count = 4) ,
     description: Faker::Lorem.paragraph,
     price: rand(10..200),
-    street: Faker::Address.street_address,
-    city: Faker::Address.city,
-    country: Faker::Address.country,
-    zipcode: Faker::Address.zip
+    street: 'Church Rd',
+    city: 'Tullamore',
+    country: 'Ireland',
+    zipcode: 'Co. Offaly'
+
+
+
     )
 
   end
