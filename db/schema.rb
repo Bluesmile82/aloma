@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150227094342) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "image_url"
     t.integer  "flat_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
