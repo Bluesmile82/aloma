@@ -16,6 +16,7 @@ gem 'paperclip'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'faker'
 
 gem 'bootstrap-sass', '~> 3.3.3'
