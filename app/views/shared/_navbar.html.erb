@@ -34,7 +34,12 @@
                    <% else %>
                    <%= image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %>
                    <% end %>
+                   <% if current_user.first_name %>
                   <%= current_user.first_name %>
+                  <% else %>
+
+                  <%= current_user.email %>
+                  <% end %>
                    <span class="caret"></span>
                   <% end %>
                   <ul class="dropdown-menu" role="menu">
