@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  get 'user/:id/flats' => 'flats#index_owner_flats', as: :owner_flats
+  get 'user/flats' => 'flats#index_owner_flats', as: :owner_flats
   get 'user/flats/:id' => 'flats#show_owner_flat', as: :owner_flat
   resources :flats do
     resources :bookings, only: [:new, :create, :index, :show ]

@@ -6,6 +6,7 @@ class FlatsController < ApplicationController
   end
 
   def show_owner_flat
+    @user = current_user
     @flat = current_user.flats.find(params[:id])
   end
 
@@ -17,7 +18,7 @@ class FlatsController < ApplicationController
           available?(flat, params)
         end
       end
-      redirect_to :root, notice: 'That city has no haunted houses, try again' if !@flats.first
+      redirect_to :root, notice: 'That city has no haunted houses, try again' if @flats.empty?
     else
       @flats = Flat.all
     end
@@ -51,8 +52,8 @@ class FlatsController < ApplicationController
   end
 
   def update
-    if  params[:flat][:pictures_attributes].nil?
-    end
+    # if  params[:flat][:pictures_attributes].nil?
+    # end
       if @flat.update(flat_params)
         redirect_to owner_flat_path, notice: 'Flat was successfully updated.'
       else
