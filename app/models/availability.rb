@@ -24,6 +24,4 @@ class Availability < ActiveRecord::Base
   #     end
   #   end
   # end
-
-
 end
