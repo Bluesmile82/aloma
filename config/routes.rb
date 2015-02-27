@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   get 'user/:id/flats' => 'flats#index_owner_flats', as: :owner_flats
   get 'user/:id/flats/:id' => 'flats#show_owner_flat', as: :owner_flat
   resources :flats do
