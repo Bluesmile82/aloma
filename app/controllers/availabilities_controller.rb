@@ -15,7 +15,7 @@ before_action :set_flat
     respond_to do |format|
       if @availability.save
         update_availabilities
-        format.html { redirect_to owner_flat_path(@flat), notice: 'Availability was successfully created.' }
+        format.html { redirect_to owner_flat_path(user_id:current_user.id, id:@flat.id), notice: 'Availability was successfully created.' }
       else
         format.html { render :new }
       end

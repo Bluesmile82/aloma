@@ -1,18 +1,12 @@
 <div class='container'>
-  <div class="row">
-<% @flat.pictures.each do |pic| %>
-<div class="col-xs-5">
-  <%= image_tag pic.image.url(:medium) %>
-  <p class="text-center"><%= link_to 'Destroy', flat_picture_path(@flat, pic), :class => 'btn btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %></p>
-</div>
-<% end %>
-</div>
+
 <div class="row">
 <div class="col-xs-6 col-xs-offset-3">
 <div class="panel panel-primary">
   <div class="panel-heading"><%= @flat.name %></div>
   <div class="panel-body">
-    <p>
+
+<p>
   <strong>Name:</strong>
   <%= @flat.name %>
 </p>
@@ -50,6 +44,7 @@
     <% @flat.pictures.each do |pic| %>
     <div class="col-xs-3">
     <%= image_tag pic.image.url(:thumb) %>
+    <%= link_to 'X', flat_picture_path(@flat, pic), :class => 'btn btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
     <% end %>
   </div>

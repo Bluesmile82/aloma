@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def index_owner_flats
     @flats = current_user.flats
+
   end
 
   def show_owner_flat
@@ -30,7 +31,7 @@ class FlatsController < ApplicationController
 
     respond_to do |format|
       if @flat.save
-        format.html { redirect_to @flat, notice: 'Flat was successfully created.' }
+        format.html { redirect_to owner_flat_path(user_id:current_user.id, id:@flat.id), notice: 'Space was successfully created.' }
       else
         format.html { render :new }
       end
@@ -40,7 +41,7 @@ class FlatsController < ApplicationController
   def update
     respond_to do |format|
       if @flat.update(flat_params)
-        format.html { redirect_to @flat, notice: 'Flat was successfully updated.' }
+        format.html { redirect_to @flat, notice: 'Space was successfully updated.' }
         format.json { render :show, status: :ok, location: @flat }
       else
         format.html { render :edit }

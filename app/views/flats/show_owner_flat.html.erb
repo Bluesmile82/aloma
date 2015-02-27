@@ -12,18 +12,13 @@
 <div class="panel panel-primary">
   <div class="panel-heading"><%= @flat.name %></div>
   <div class="panel-body">
-    <p>
-  <strong>Name:</strong>
-  <%= @flat.name %>
-</p>
 
 <p>
-  <strong>Description:</strong>
   <%= @flat.description %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>EUR </strong>
   <%= @flat.price %>
 </p>
 
@@ -55,13 +50,14 @@
   </div>
 <strong>My availabilities</strong>
   <% @flat.availabilities.each do |availability| %>
-  <li>Start date: <%= availability.start_date %> End date: <%= availability.end_date %></li>
+  <p>From <%= availability.start_date %> to <%= availability.end_date %></p>
   <% end %>
+
   <br>
 <%= link_to 'Edit', edit_flat_path(@flat), :class => "btn btn-primary" %>
 <%= link_to 'Delete', flat_path(@flat),:method => :delete, :class => "btn btn-primary" %>
-<%= link_to("Add availability", new_flat_availability_path(@flat), :class => "btn btn-primary" ) %>
-<%= link_to 'Back', owner_flats_path, :class => "btn btn-primary" %>
+<%= link_to 'Add availability', new_flat_availability_path(@flat), :class => "btn btn-primary" %>
+<%= link_to 'My spaces', owner_flats_path(id: @flat, user_id:current_user), :class => "btn btn-primary" %>
   </div>
 </div>
 </div>

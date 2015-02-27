@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get 'user/:id/flats' => 'flats#index_owner_flats', as: :owner_flats
-  get 'user/:id/flats/:id' => 'flats#show_owner_flat', as: :owner_flat
+  get 'user/:user_id/flats' => 'flats#index_owner_flats', as: :owner_flats
+  get 'user/:user_id/flats/:id' => 'flats#show_owner_flat', as: :owner_flat
   resources :flats do
     resources :bookings, only: [:new, :create, :index, :show ]
     resources :pictures, only: [:new, :create, :destroy ]
