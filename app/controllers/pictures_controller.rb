@@ -7,15 +7,16 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = @flat.pictures.build(picture_params)
+
+    @picture = @flat.pictures.last.build(picture_params)
     @picture.save
-    redirect_to @flat
+    redirect_to owner_flat_path
   end
 
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-    redirect_to @flat
+    redirect_to owner_flat_path(@flat)
   end
 
   private

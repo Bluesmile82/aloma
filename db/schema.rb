@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150227094342) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "max_guest"
   end
 
   create_table "pictures", force: :cascade do |t|
