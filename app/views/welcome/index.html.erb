@@ -1,8 +1,43 @@
 <h1 id="title">The best places to be scared...</h1>
 
-<div class="container text-center">
+<!-- <div class="container text-center">
 <%= link_to("All the flats", flats_path, class: "btn btn-sample") %>
+</div> -->
+
+
+<!--
+<div id="search-box">
+ <%= form_tag(flats_path, :method => "get", id: "search-box") do %>
+   <%= text_field_tag :city, params[:city], placeholder: "Search for cities" %>
+   <%= text_field_tag :start_date, params[:start_date], placeholder: "Check in" %>
+   <%= text_field_tag :start_date, params[:start_date], placeholder: "Check out" %>
+
+   <%= submit_tag "Dare to be spooked", :name => nil, class: "btn btn-danger" %>
+ <% end %>
+</div> -->
+<div class="row text-center search">
+<!-- <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p> -->
+<div id="search_advanced" class="hidden">
+  <%= simple_form_for :search, { :url => flats_path ,:method => 'get', :html => { class: 'form-inline' } }  do |f| %>
+    <%= f.input :city, placeholder: "Search for cities", label: false %>
+    <%= f.input :start_date, placeholder: "Check in", label: false, :as => 'date' %>
+    <%= f.input :end_date, placeholder: "Check out", label: false, :as => 'date' %>
+    <%= f.hidden_field :advanced, value: true %>
+  <%= f.submit 'Dare to be spooked', class: 'btn btn-sample'  %>
+  <%= link_to("Basic search", "#" ,id: "basic", class: "btn btn-sample") %>
+  <% end %>
 </div>
+<div id="search_basic">
+  <%= simple_form_for :search, { :url => flats_path ,:method => 'get', :html => { class: 'form-inline' } }  do |f| %>
+    <%= f.input :city, placeholder: "Search for cities", label: false %>
+    <%= f.hidden_field :advanced, value: false %>
+  <%= f.submit 'Dare to be spooked', class: 'btn btn-sample'  %>
+  <%= link_to("Advanced search", "#" ,id: "advanced", class: "btn btn-sample") %>
+  <% end %>
+</div>
+</div>
+
 
 <%= video_tag "https://s3.eu-central-1.amazonaws.com/aloma/development/videos/Ghost-HD.mp4" , :autoplay => true, :loop => true, :class => "vidb" %>
 <!-- <video width="320" height="240" controls="controls">

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     # get 'welcome/index'
     resources :availabilities, only: [:index, :new, :create]
   end
+  get 'flats/:search' => 'flats#index', as: :flats_search
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
