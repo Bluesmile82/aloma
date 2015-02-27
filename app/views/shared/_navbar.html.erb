@@ -25,7 +25,17 @@
                     <li>
                   <%= link_to flats_path do %><i class="fa fa-bed"></i> All the flats
                     <% end %></li>
-                  <li class="dropdown"><%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %><%= image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %><%= current_user.email %> <span class="caret"></span>
+
+
+
+                  <li class="dropdown"><%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
+                  <% if current_user.picture %>
+                   <%= image_tag current_user.picture, class: "img-avatar" %>
+                   <% else %>
+                   <%= image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %>
+                   <% end %>
+                  <%= current_user.first_name %>
+                   <span class="caret"></span>
                   <% end %>
                   <ul class="dropdown-menu" role="menu">
                     <li><%= link_to owner_flats_path(current_user) do %><i class="fa fa-bed"></i> My Flats<% end %></li>
@@ -36,10 +46,16 @@
                   </ul>
                   </li>
                 <% else %>
-                <li><%= link_to 'Sign Up', new_user_registration_path, class: "btn" %></li>
-                <li><%= link_to 'Log In', new_user_session_path, class: "btn" %></li>
-                <% end %>
+                  <li><%= link_to 'Sign Up', new_user_registration_path, class: "btn" %></li>
+                  <li><%= link_to 'Log In', new_user_session_path, class: "btn" %></li>
 
+              <!-- Facebook login -->
+                 <li>
+                  <%= link_to user_omniauth_authorize_path(:facebook), class: "btn" do %>
+                  Connect with <i class="fa fa-facebook-square"></i>
+                  <% end %>
+                </li>
+                <% end %>
 
           <li>
             <%= link_to "List your space", new_flat_path, class: "btn" %>

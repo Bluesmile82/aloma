@@ -48,12 +48,13 @@
     <p>
       <%= p.label :image %>
       <%= p.file_field :image %>
-
       <img src="<%= p.object.image.url(:thumb) %>">
     </p>
  <% end %>
 
- <%= f.submit "Submit", :class => 'btn btn-primary' %>
+
+ <%= f.submit "Update your Flat!", :class => 'btn btn-primary' %>
+<%= link_to "Back", :back , :class => 'btn btn-primary'%>
 
 <% end %>
 

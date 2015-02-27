@@ -4,6 +4,7 @@ body{
 
 #title{
   font-size: 80px;
+  text-shadow: 2px 2px 6px black;
   color:white;
 
 }
@@ -20,5 +21,10 @@ background-size: cover;
   margin-bottom: 50px;
 }
 
+
+.search{
+  position: absolute;
+  margin-top: 12%;
+}
 
 }
