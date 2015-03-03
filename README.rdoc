@@ -4,6 +4,4 @@ Airbnb Clone made in rails during LeWagon
 
 * ruby 2.2.0
 
-* Database: postgresql
-
 * Demo: http://aloma.herokuapp.com
